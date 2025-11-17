@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.2.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;BoothTracker - UAE Edition&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&quot;&gt;
+    &lt;style&gt;
+        :root {
+            --uae-red: #C8102E;
+            --uae-green: #007A3D;
+            --uae-white: #FFFFFF;
+            --uae-black: #000000;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--uae-red), var(--uae-green));
+            color: var(--uae-white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--uae-white);
+        }
+
+        .clock {
+            font-size: 1.2rem;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            padding: 20px;
+        }
+
+        .login-form {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--uae-red);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--uae-green);
+            box-shadow: 0 0 0 3px rgba(0, 122, 61, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--uae-green);
+            color: var(--uae-white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #005d2e;
+            transform: translateY(-2px);
+        }
+
+        .btn-red {
+            background-color: var(--uae-red);
+        }
+
+        .btn-red:hover {
+            background-color: #9a0c23;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: &quot;&quot;;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider span {
+            background-color: var(--card-bg);
+            padding: 0 15px;
+            position: relative;
+            color: #777;
+        }
+
+        .dashboard-container {
+            display: none;
+        }
+
+        .sidebar {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            height: calc(100vh - 80px);
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 250px;
+            overflow-y: auto;
+            z-index: 50;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: rgba(0, 122, 61, 0.1);
+            border-left-color: var(--uae-green);
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--uae-red);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(0, 122, 61, 0.1);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 122, 61, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background-color: rgba(0, 122, 61, 0.2);
+            color: var(--uae-green);
+        }
+
+        .badge-warning {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #856404;
+        }
+
+        .badge-danger {
+            background-color: rgba(200, 16, 46, 0.2);
+            color: var(--uae-red);
+        }
+
+        .badge-info {
+            background-color: rgba(23, 162, 184, 0.2);
+            color: #0c5460;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group.half {
+            flex: 1;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab:hover {
+            background-color: rgba(0, 122, 61, 0.05);
+        }
+
+        .tab.active {
+            border-bottom-color: var(--uae-green);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: var(--uae-white);
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: var(--uae-green);
+        }
+
+        .notification.error {
+            background-color: var(--uae-red);
+        }
+
+        .notification.warning {
+            background-color: #FFC107;
+            color: #333;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .stock-warning {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .stock-critical {
+            background-color: var(--uae-red);
+            color: var(--uae-white);
+        }
+
+        .stock-low {
+            background-color: #FFC107;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .stat-icon.red {
+            background-color: rgba(200, 16, 46, 0.2);
+            color: var(--uae-red);
+        }
+
+        .stat-icon.green {
+            background-color: rgba(0, 122, 61, 0.2);
+            color: var(--uae-green);
+        }
+
+        .stat-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-check-input {
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--uae-green);
+            color: var(--uae-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .user-role {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .logout-btn {
+            background-color: transparent;
+            border: 1px solid var(--uae-white);
+            color: var(--uae-white);
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .ranking-list {
+            list-style: none;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ranking-position {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--uae-green);
+            color: var(--uae-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .ranking-position.gold {
+            background-color: #FFD700;
+            color: #333;
+        }
+
+        .ranking-position.silver {
+            background-color: #C0C0C0;
+            color: #333;
+        }
+
+        .ranking-position.bronze {
+            background-color: #CD7F32;
+            color: #333;
+        }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            font-weight: 600;
+        }
+
+        .ranking-sales {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .table-container {
+                overflow-x: scroll;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;div class=&quot;header-content&quot;&gt;
+            &lt;div class=&quot;logo&quot;&gt;
+                &lt;i class=&quot;fas fa-store&quot;&gt;&lt;/i&gt;
+                BoothTracker UAE
+            &lt;/div&gt;
+            &lt;div class=&quot;clock&quot; id=&quot;clock&quot;&gt;00:00:00 AM&lt;/div&gt;
+            &lt;div class=&quot;user-info&quot; id=&quot;userInfo&quot; style=&quot;display: none;&quot;&gt;
+                &lt;div class=&quot;user-avatar&quot; id=&quot;userAvatar&quot;&gt;A&lt;/div&gt;
+                &lt;div class=&quot;user-details&quot;&gt;
+                    &lt;div class=&quot;user-name&quot; id=&quot;userName&quot;&gt;Admin User&lt;/div&gt;
+                    &lt;div class=&quot;user-role&quot; id=&quot;userRole&quot;&gt;Administrator&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&quot;logout-btn&quot; id=&quot;logoutBtn&quot;&gt;Logout&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;!-- Login Screen --&gt;
+        &lt;div class=&quot;login-container&quot; id=&quot;loginContainer&quot;&gt;
+            &lt;div class=&quot;login-form&quot;&gt;
+                &lt;h2&gt;Login to BoothTracker&lt;/h2&gt;
+                &lt;form id=&quot;loginForm&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;loginUsername&quot;&gt;Username&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;loginUsername&quot; placeholder=&quot;Enter your username&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;loginPassword&quot;&gt;Password&lt;/label&gt;
+                        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;loginPassword&quot; placeholder=&quot;Enter your password&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;loginBoothNumber&quot;&gt;Booth Number&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;loginBoothNumber&quot; placeholder=&quot;Enter your booth number&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;button type=&quot;submit&quot; class=&quot;btn btn-block&quot;&gt;Login&lt;/button&gt;
+                &lt;/form&gt;
+                &lt;div class=&quot;divider&quot;&gt;
+                    &lt;span&gt;OR&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;button class=&quot;btn btn-red btn-block&quot; id=&quot;createAccountBtn&quot;&gt;Create New Account&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Dashboard --&gt;
+        &lt;div class=&quot;dashboard-container&quot; id=&quot;dashboardContainer&quot;&gt;
+            &lt;div class=&quot;sidebar&quot;&gt;
+                &lt;div class=&quot;sidebar-menu&quot;&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;menu-item active&quot; data-section=&quot;cashier&quot;&gt;
+                        &lt;i class=&quot;fas fa-cash-register&quot;&gt;&lt;/i&gt; Cashier
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;menu-item&quot; data-section=&quot;kitchen&quot;&gt;
+                        &lt;i class=&quot;fas fa-utensils&quot;&gt;&lt;/i&gt; Kitchen
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;menu-item&quot; data-section=&quot;pickup&quot;&gt;
+                        &lt;i class=&quot;fas fa-hand-holding&quot;&gt;&lt;/i&gt; Pickup
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;menu-item&quot; data-section=&quot;admin&quot; id=&quot;adminMenuItem&quot; style=&quot;display: none;&quot;&gt;
+                        &lt;i class=&quot;fas fa-user-shield&quot;&gt;&lt;/i&gt; Admin
+                        &lt;span style=&quot;display: inline-block; margin-left: auto;&quot;&gt;
+                            &lt;i class=&quot;fas fa-lock&quot;&gt;&lt;/i&gt;
+                        &lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;main-content&quot;&gt;
+                &lt;!-- Cashier Section --&gt;
+                &lt;div class=&quot;content-section active&quot; id=&quot;cashier&quot;&gt;
+                    &lt;div class=&quot;section-header&quot;&gt;
+                        &lt;h1 class=&quot;section-title&quot;&gt;Cashier&lt;/h1&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;card&quot;&gt;
+                        &lt;div class=&quot;card-header&quot;&gt;
+                            &lt;h2 class=&quot;card-title&quot;&gt;New Order&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;form-row&quot;&gt;
+                            &lt;div class=&quot;form-group half&quot;&gt;
+                                &lt;label for=&quot;customerName&quot;&gt;Customer Name&lt;/label&gt;
+                                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;customerName&quot; placeholder=&quot;Enter customer name&quot;&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;form-group half&quot;&gt;
+                                &lt;label for=&quot;orderType&quot;&gt;Order Type&lt;/label&gt;
+                                &lt;select class=&quot;form-control&quot; id=&quot;orderType&quot;&gt;
+                                    &lt;option value=&quot;dine-in&quot;&gt;Dine In&lt;/option&gt;
+                                    &lt;option value=&quot;takeaway&quot;&gt;Takeaway&lt;/option&gt;
+                                &lt;/select&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h3 class=&quot;card-title&quot;&gt;Order Items&lt;/h3&gt;
+                                &lt;button class=&quot;btn btn-sm&quot; id=&quot;addItemBtn&quot;&gt;
+                                    &lt;i class=&quot;fas fa-plus&quot;&gt;&lt;/i&gt; Add Item
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;table-container&quot;&gt;
+                                &lt;table id=&quot;orderItemsTable&quot;&gt;
+                                    &lt;thead&gt;
+                                        &lt;tr&gt;
+                                            &lt;th&gt;Item&lt;/th&gt;
+                                            &lt;th&gt;Price&lt;/th&gt;
+                                            &lt;th&gt;Quantity&lt;/th&gt;
+                                            &lt;th&gt;Total&lt;/th&gt;
+                                            &lt;th&gt;Actions&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/thead&gt;
+                                    &lt;tbody id=&quot;orderItemsBody&quot;&gt;
+                                        &lt;!-- Order items will be added here --&gt;
+                                    &lt;/tbody&gt;
+                                    &lt;tfoot&gt;
+                                        &lt;tr&gt;
+                                            &lt;th colspan=&quot;3&quot;&gt;Total&lt;/th&gt;
+                                            &lt;th id=&quot;orderTotal&quot;&gt;0.00 AED&lt;/th&gt;
+                                            &lt;th&gt;&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/tfoot&gt;
+                                &lt;/table&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div style=&quot;margin-top: 20px; display: flex; justify-content: flex-end;&quot;&gt;
+                            &lt;button class=&quot;btn&quot; id=&quot;submitOrderBtn&quot;&gt;Submit Order&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;card&quot;&gt;
+                        &lt;div class=&quot;card-header&quot;&gt;
+                            &lt;h2 class=&quot;card-title&quot;&gt;Recent Orders&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;table-container&quot;&gt;
+                            &lt;table&gt;
+                                &lt;thead&gt;
+                                    &lt;tr&gt;
+                                        &lt;th&gt;Order ID&lt;/th&gt;
+                                        &lt;th&gt;Customer&lt;/th&gt;
+                                        &lt;th&gt;Items&lt;/th&gt;
+                                        &lt;th&gt;Total&lt;/th&gt;
+                                        &lt;th&gt;Status&lt;/th&gt;
+                                        &lt;th&gt;Date&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody id=&quot;recentOrdersBody&quot;&gt;
+                                    &lt;!-- Recent orders will be added here --&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Kitchen Section --&gt;
+                &lt;div class=&quot;content-section&quot; id=&quot;kitchen&quot;&gt;
+                    &lt;div class=&quot;section-header&quot;&gt;
+                        &lt;h1 class=&quot;section-title&quot;&gt;Kitchen&lt;/h1&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;card&quot;&gt;
+                        &lt;div class=&quot;card-header&quot;&gt;
+                            &lt;h2 class=&quot;card-title&quot;&gt;Pending Orders&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;table-container&quot;&gt;
+                            &lt;table&gt;
+                                &lt;thead&gt;
+                                    &lt;tr&gt;
+                                        &lt;th&gt;Order ID&lt;/th&gt;
+                                        &lt;th&gt;Customer&lt;/th&gt;
+                                        &lt;th&gt;Items&lt;/th&gt;
+                                        &lt;th&gt;Order Time&lt;/th&gt;
+                                        &lt;th&gt;Status&lt;/th&gt;
+                                        &lt;th&gt;Actions&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody id=&quot;pendingOrdersBody&quot;&gt;
+                                    &lt;!-- Pending orders will be added here --&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Pickup Section --&gt;
+                &lt;div class=&quot;content-section&quot; id=&quot;pickup&quot;&gt;
+                    &lt;div class=&quot;section-header&quot;&gt;
+                        &lt;h1 class=&quot;section-title&quot;&gt;Pickup&lt;/h1&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;card&quot;&gt;
+                        &lt;div class=&quot;card-header&quot;&gt;
+                            &lt;h2 class=&quot;card-title&quot;&gt;Ready for Pickup&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;table-container&quot;&gt;
+                            &lt;table&gt;
+                                &lt;thead&gt;
+                                    &lt;tr&gt;
+                                        &lt;th&gt;Order ID&lt;/th&gt;
+                                        &lt;th&gt;Customer&lt;/th&gt;
+                                        &lt;th&gt;Items&lt;/th&gt;
+                                        &lt;th&gt;Order Time&lt;/th&gt;
+                                        &lt;th&gt;Status&lt;/th&gt;
+                                        &lt;th&gt;Actions&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody id=&quot;readyOrdersBody&quot;&gt;
+                                    &lt;!-- Ready orders will be added here --&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Admin Section --&gt;
+                &lt;div class=&quot;content-section&quot; id=&quot;admin&quot;&gt;
+                    &lt;div class=&quot;section-header&quot;&gt;
+                        &lt;h1 class=&quot;section-title&quot;&gt;Admin Panel&lt;/h1&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;tabs&quot;&gt;
+                        &lt;div class=&quot;tab active&quot; data-tab=&quot;inventory&quot;&gt;Inventory&lt;/div&gt;
+                        &lt;div class=&quot;tab&quot; data-tab=&quot;sales&quot;&gt;Sales Reports&lt;/div&gt;
+                        &lt;div class=&quot;tab&quot; data-tab=&quot;shifts&quot;&gt;Shift Management&lt;/div&gt;
+                        &lt;div class=&quot;tab&quot; data-tab=&quot;account&quot;&gt;Account Settings&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Inventory Tab --&gt;
+                    &lt;div class=&quot;tab-content active&quot; id=&quot;inventory&quot;&gt;
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h2 class=&quot;card-title&quot;&gt;Stock Management&lt;/h2&gt;
+                                &lt;button class=&quot;btn btn-sm&quot; id=&quot;addStockBtn&quot;&gt;
+                                    &lt;i class=&quot;fas fa-plus&quot;&gt;&lt;/i&gt; Add Item
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;table-container&quot;&gt;
+                                &lt;table&gt;
+                                    &lt;thead&gt;
+                                        &lt;tr&gt;
+                                            &lt;th&gt;Item Name&lt;/th&gt;
+                                            &lt;th&gt;Current Stock&lt;/th&gt;
+                                            &lt;th&gt;Unit Price&lt;/th&gt;
+                                            &lt;th&gt;Status&lt;/th&gt;
+                                            &lt;th&gt;Actions&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/thead&gt;
+                                    &lt;tbody id=&quot;stockTableBody&quot;&gt;
+                                        &lt;!-- Stock items will be added here --&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Sales Reports Tab --&gt;
+                    &lt;div class=&quot;tab-content&quot; id=&quot;sales&quot;&gt;
+                        &lt;div class=&quot;stats-grid&quot;&gt;
+                            &lt;div class=&quot;stat-card&quot;&gt;
+                                &lt;div class=&quot;stat-icon green&quot;&gt;
+                                    &lt;i class=&quot;fas fa-dollar-sign&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;stat-info&quot;&gt;
+                                    &lt;h3 id=&quot;todayRevenue&quot;&gt;0.00 AED&lt;/h3&gt;
+                                    &lt;p&gt;Today's Revenue&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;stat-card&quot;&gt;
+                                &lt;div class=&quot;stat-icon red&quot;&gt;
+                                    &lt;i class=&quot;fas fa-shopping-cart&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;stat-info&quot;&gt;
+                                    &lt;h3 id=&quot;todayOrders&quot;&gt;0&lt;/h3&gt;
+                                    &lt;p&gt;Today's Orders&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;stat-card&quot;&gt;
+                                &lt;div class=&quot;stat-icon green&quot;&gt;
+                                    &lt;i class=&quot;fas fa-chart-line&quot;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;stat-info&quot;&gt;
+                                    &lt;h3 id=&quot;weekRevenue&quot;&gt;0.00 AED&lt;/h3&gt;
+                                    &lt;p&gt;This Week's Revenue&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h2 class=&quot;card-title&quot;&gt;Sales History&lt;/h2&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;table-container&quot;&gt;
+                                &lt;table&gt;
+                                    &lt;thead&gt;
+                                        &lt;tr&gt;
+                                            &lt;th&gt;Order ID&lt;/th&gt;
+                                            &lt;th&gt;Date&lt;/th&gt;
+                                            &lt;th&gt;Items&lt;/th&gt;
+                                            &lt;th&gt;Total&lt;/th&gt;
+                                            &lt;th&gt;Staff&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/thead&gt;
+                                    &lt;tbody id=&quot;salesHistoryBody&quot;&gt;
+                                        &lt;!-- Sales history will be added here --&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Shift Management Tab --&gt;
+                    &lt;div class=&quot;tab-content&quot; id=&quot;shifts&quot;&gt;
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h2 class=&quot;card-title&quot;&gt;Shift Schedule&lt;/h2&gt;
+                                &lt;button class=&quot;btn btn-sm&quot; id=&quot;addShiftBtn&quot;&gt;
+                                    &lt;i class=&quot;fas fa-plus&quot;&gt;&lt;/i&gt; Add Shift
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;table-container&quot;&gt;
+                                &lt;table&gt;
+                                    &lt;thead&gt;
+                                        &lt;tr&gt;
+                                            &lt;th&gt;Shift Name&lt;/th&gt;
+                                            &lt;th&gt;Start Time&lt;/th&gt;
+                                            &lt;th&gt;End Time&lt;/th&gt;
+                                            &lt;th&gt;Staff&lt;/th&gt;
+                                            &lt;th&gt;Actions&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                    &lt;/thead&gt;
+                                    &lt;tbody id=&quot;shiftsTableBody&quot;&gt;
+                                        &lt;!-- Shifts will be added here --&gt;
+                                    &lt;/tbody&gt;
+                                &lt;/table&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Account Settings Tab --&gt;
+                    &lt;div class=&quot;tab-content&quot; id=&quot;account&quot;&gt;
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h2 class=&quot;card-title&quot;&gt;Account Settings&lt;/h2&gt;
+                            &lt;/div&gt;
+                            &lt;form id=&quot;accountSettingsForm&quot;&gt;
+                                &lt;div class=&quot;form-group&quot;&gt;
+                                    &lt;label for=&quot;boothName&quot;&gt;Booth Name&lt;/label&gt;
+                                    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;boothName&quot; placeholder=&quot;Enter booth name&quot;&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;form-group&quot;&gt;
+                                    &lt;label for=&quot;boothNumberSettings&quot;&gt;Booth Number&lt;/label&gt;
+                                    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;boothNumberSettings&quot; placeholder=&quot;Enter booth number&quot; readonly&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;form-group&quot;&gt;
+                                    &lt;label for=&quot;currentPassword&quot;&gt;Current Password&lt;/label&gt;
+                                    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;currentPassword&quot; placeholder=&quot;Enter current password&quot;&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;form-group&quot;&gt;
+                                    &lt;label for=&quot;newPassword&quot;&gt;New Password&lt;/label&gt;
+                                    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;newPassword&quot; placeholder=&quot;Enter new password&quot;&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;form-group&quot;&gt;
+                                    &lt;label for=&quot;confirmPassword&quot;&gt;Confirm New Password&lt;/label&gt;
+                                    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;confirmPassword&quot; placeholder=&quot;Confirm new password&quot;&gt;
+                                &lt;/div&gt;
+                                &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Update Settings&lt;/button&gt;
+                            &lt;/form&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&quot;card&quot;&gt;
+                            &lt;div class=&quot;card-header&quot;&gt;
+                                &lt;h2 class=&quot;card-title&quot;&gt;Danger Zone&lt;/h2&gt;
+                            &lt;/div&gt;
+                            &lt;p style=&quot;margin-bottom: 15px;&quot;&gt;Once you delete your account, there is no going back. Please be certain.&lt;/p&gt;
+                            &lt;button class=&quot;btn btn-red&quot; id=&quot;deleteAccountBtn&quot;&gt;Delete Account&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Create Account Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;createAccountModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Create New Account&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeCreateAccountModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;form id=&quot;createAccountForm&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;newUsername&quot;&gt;Username&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;newUsername&quot; placeholder=&quot;Choose a username&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;newAccountPassword&quot;&gt;Password&lt;/label&gt;
+                        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;newAccountPassword&quot; placeholder=&quot;Choose a password&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;confirmAccountPassword&quot;&gt;Confirm Password&lt;/label&gt;
+                        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;confirmAccountPassword&quot; placeholder=&quot;Confirm your password&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;newBoothNumber&quot;&gt;Booth Number&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;newBoothNumber&quot; placeholder=&quot;Enter your booth number&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;newBoothName&quot;&gt;Booth Name&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;newBoothName&quot; placeholder=&quot;Enter your booth name&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;adminPassword&quot;&gt;Admin Password&lt;/label&gt;
+                        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;adminPassword&quot; placeholder=&quot;Enter admin password for this booth&quot; required&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelCreateAccount&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn btn-red&quot; id=&quot;confirmCreateAccount&quot;&gt;Create Account&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Add Item Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;addItemModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Add Item to Order&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeAddItemModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;form id=&quot;addItemForm&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;itemSelect&quot;&gt;Select Item&lt;/label&gt;
+                        &lt;select class=&quot;form-control&quot; id=&quot;itemSelect&quot;&gt;
+                            &lt;!-- Items will be populated from inventory --&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;itemQuantity&quot;&gt;Quantity&lt;/label&gt;
+                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; id=&quot;itemQuantity&quot; min=&quot;1&quot; value=&quot;1&quot; required&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelAddItem&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;confirmAddItem&quot;&gt;Add Item&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Add Stock Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;addStockModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Add New Stock Item&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeAddStockModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;form id=&quot;addStockForm&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;stockItemName&quot;&gt;Item Name&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;stockItemName&quot; placeholder=&quot;Enter item name&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;stockItemQuantity&quot;&gt;Initial Quantity&lt;/label&gt;
+                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; id=&quot;stockItemQuantity&quot; min=&quot;0&quot; value=&quot;10&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;stockItemPrice&quot;&gt;Unit Price (AED)&lt;/label&gt;
+                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; id=&quot;stockItemPrice&quot; min=&quot;0&quot; step=&quot;0.01&quot; placeholder=&quot;0.00&quot; required&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelAddStock&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;confirmAddStock&quot;&gt;Add Item&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Edit Stock Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;editStockModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Edit Stock Item&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeEditStockModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;form id=&quot;editStockForm&quot;&gt;
+                    &lt;input type=&quot;hidden&quot; id=&quot;editStockId&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;editStockItemName&quot;&gt;Item Name&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;editStockItemName&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;editStockItemQuantity&quot;&gt;Quantity&lt;/label&gt;
+                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; id=&quot;editStockItemQuantity&quot; min=&quot;0&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;editStockItemPrice&quot;&gt;Unit Price (AED)&lt;/label&gt;
+                        &lt;input type=&quot;number&quot; class=&quot;form-control&quot; id=&quot;editStockItemPrice&quot; min=&quot;0&quot; step=&quot;0.01&quot; required&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelEditStock&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;confirmEditStock&quot;&gt;Update Item&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Add Shift Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;addShiftModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Add New Shift&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeAddShiftModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;form id=&quot;addShiftForm&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;shiftName&quot;&gt;Shift Name&lt;/label&gt;
+                        &lt;select class=&quot;form-control&quot; id=&quot;shiftName&quot;&gt;
+                            &lt;option value=&quot;Morning&quot;&gt;Morning&lt;/option&gt;
+                            &lt;option value=&quot;Afternoon&quot;&gt;Afternoon&lt;/option&gt;
+                            &lt;option value=&quot;Evening&quot;&gt;Evening&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;shiftStartTime&quot;&gt;Start Time&lt;/label&gt;
+                        &lt;input type=&quot;time&quot; class=&quot;form-control&quot; id=&quot;shiftStartTime&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;shiftEndTime&quot;&gt;End Time&lt;/label&gt;
+                        &lt;input type=&quot;time&quot; class=&quot;form-control&quot; id=&quot;shiftEndTime&quot; required&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label for=&quot;shiftStaff&quot;&gt;Staff Name&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;shiftStaff&quot; placeholder=&quot;Enter staff name&quot; required&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelAddShift&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;confirmAddShift&quot;&gt;Add Shift&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Delete Account Confirmation Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;deleteAccountModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Delete Account&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeDeleteAccountModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;p&gt;Are you sure you want to delete your account? This action cannot be undone.&lt;/p&gt;
+                &lt;p style=&quot;margin-top: 15px;&quot;&gt;To confirm, please type &lt;strong&gt;DELETE&lt;/strong&gt; in the box below:&lt;/p&gt;
+                &lt;div class=&quot;form-group&quot; style=&quot;margin-top: 15px;&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;deleteConfirmation&quot; placeholder=&quot;Type DELETE to confirm&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelDeleteAccount&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn btn-red&quot; id=&quot;confirmDeleteAccount&quot;&gt;Delete Account&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Admin Password Modal --&gt;
+    &lt;div class=&quot;modal&quot; id=&quot;adminPasswordModal&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h2 class=&quot;modal-title&quot;&gt;Enter Admin Password&lt;/h2&gt;
+                &lt;button class=&quot;modal-close&quot; id=&quot;closeAdminPasswordModal&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+                &lt;div class=&quot;form-group&quot;&gt;
+                    &lt;label for=&quot;adminPasswordInput&quot;&gt;Admin Password&lt;/label&gt;
+                    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;adminPasswordInput&quot; placeholder=&quot;Enter admin password&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;cancelAdminPassword&quot;&gt;Cancel&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; id=&quot;confirmAdminPassword&quot;&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Master Account Dashboard --&gt;
+    &lt;div class=&quot;content-section&quot; id=&quot;masterDashboard&quot; style=&quot;display: none;&quot;&gt;
+        &lt;div class=&quot;section-header&quot;&gt;
+            &lt;h1 class=&quot;section-title&quot;&gt;Master Dashboard&lt;/h1&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;stats-grid&quot;&gt;
+            &lt;div class=&quot;stat-card&quot;&gt;
+                &lt;div class=&quot;stat-icon green&quot;&gt;
+                    &lt;i class=&quot;fas fa-store&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;stat-info&quot;&gt;
+                    &lt;h3 id=&quot;totalBooths&quot;&gt;0&lt;/h3&gt;
+                    &lt;p&gt;Total Booths&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;stat-card&quot;&gt;
+                &lt;div class=&quot;stat-icon red&quot;&gt;
+                    &lt;i class=&quot;fas fa-dollar-sign&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;stat-info&quot;&gt;
+                    &lt;h3 id=&quot;totalRevenue&quot;&gt;0.00 AED&lt;/h3&gt;
+                    &lt;p&gt;Total Revenue&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;stat-card&quot;&gt;
+                &lt;div class=&quot;stat-icon green&quot;&gt;
+                    &lt;i class=&quot;fas fa-shopping-cart&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;stat-info&quot;&gt;
+                    &lt;h3 id=&quot;totalOrders&quot;&gt;0&lt;/h3&gt;
+                    &lt;p&gt;Total Orders&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;div class=&quot;card-header&quot;&gt;
+                &lt;h2 class=&quot;card-title&quot;&gt;Booth Sales Ranking&lt;/h2&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;table-container&quot;&gt;
+                &lt;table&gt;
+                    &lt;thead&gt;
+                        &lt;tr&gt;
+                            &lt;th&gt;Rank&lt;/th&gt;
+                            &lt;th&gt;Booth Number&lt;/th&gt;
+                            &lt;th&gt;Booth Name&lt;/th&gt;
+                            &lt;th&gt;Revenue (AED)&lt;/th&gt;
+                            &lt;th&gt;Orders&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody id=&quot;boothRankingBody&quot;&gt;
+                        &lt;!-- Booth ranking will be added here --&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Notification --&gt;
+    &lt;div class=&quot;notification&quot; id=&quot;notification&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        // Global variables
+        let currentUser = null;
+        let currentBooth = null;
+        let orderItems = [];
+        let orders = [];
+        let inventory = [];
+        let shifts = [];
+        let salesHistory = [];
+        let isAdmin = false;
+
+        // DOM elements
+        const loginContainer = document.getElementById('loginContainer');
+        const dashboardContainer = document.getElementById('dashboardContainer');
+        const loginForm = document.getElementById('loginForm');
+        const createAccountBtn = document.getElementById('createAccountBtn');
+        const createAccountModal = document.getElementById('createAccountModal');
+        const closeCreateAccountModal = document.getElementById('closeCreateAccountModal');
+        const cancelCreateAccount = document.getElementById('cancelCreateAccount');
+        const confirmCreateAccount = document.getElementById('confirmCreateAccount');
+        const createAccountForm = document.getElementById('createAccountForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const userRole = document.getElementById('userRole');
+        const userAvatar = document.getElementById('userAvatar');
+        const clock = document.getElementById('clock');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        const adminMenuItem = document.getElementById('adminMenuItem');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const addItemBtn = document.getElementById('addItemBtn');
+        const addItemModal = document.getElementById('addItemModal');
+        const closeAddItemModal = document.getElementById('closeAddItemModal');
+        const cancelAddItem = document.getElementById('cancelAddItem');
+        const confirmAddItem = document.getElementById('confirmAddItem');
+        const addItemForm = document.getElementById('addItemForm');
+        const submitOrderBtn = document.getElementById('submitOrderBtn');
+        const addStockBtn = document.getElementById('addStockBtn');
+        const addStockModal = document.getElementById('addStockModal');
+        const closeAddStockModal = document.getElementById('closeAddStockModal');
+        const cancelAddStock = document.getElementById('cancelAddStock');
+        const confirmAddStock = document.getElementById('confirmAddStock');
+        const addStockForm = document.getElementById('addStockForm');
+        const editStockModal = document.getElementById('editStockModal');
+        const closeEditStockModal = document.getElementById('closeEditStockModal');
+        const cancelEditStock = document.getElementById('cancelEditStock');
+        const confirmEditStock = document.getElementById('confirmEditStock');
+        const editStockForm = document.getElementById('editStockForm');
+        const addShiftBtn = document.getElementById('addShiftBtn');
+        const addShiftModal = document.getElementById('addShiftModal');
+        const closeAddShiftModal = document.getElementById('closeAddShiftModal');
+        const cancelAddShift = document.getElementById('cancelAddShift');
+        const confirmAddShift = document.getElementById('confirmAddShift');
+        const addShiftForm = document.getElementById('addShiftForm');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const deleteAccountModal = document.getElementById('deleteAccountModal');
+        const closeDeleteAccountModal = document.getElementById('closeDeleteAccountModal');
+        const cancelDeleteAccount = document.getElementById('cancelDeleteAccount');
+        const confirmDeleteAccount = document.getElementById('confirmDeleteAccount');
+        const adminPasswordModal = document.getElementById('adminPasswordModal');
+        const closeAdminPasswordModal = document.getElementById('closeAdminPasswordModal');
+        const cancelAdminPassword = document.getElementById('cancelAdminPassword');
+        const confirmAdminPassword = document.getElementById('confirmAdminPassword');
+        const accountSettingsForm = document.getElementById('accountSettingsForm');
+        const notification = document.getElementById('notification');
+        const masterDashboard = document.getElementById('masterDashboard');
+
+        // Initialize app
+        function init() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            loadLocalData();
+            setupEventListeners();
+        }
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const ampm = hours &gt;= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            clock.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        // Load data from localStorage
+        function loadLocalData() {
+            // Check if master account exists
+            if (!localStorage.getItem('masterAccount')) {
+                const masterAccount = {
+                    username: 'master',
+                    password: 'master123',
+                    role: 'master'
+                };
+                localStorage.setItem('masterAccount', JSON.stringify(masterAccount));
+            }
+
+            // Load other data
+            const savedOrders = localStorage.getItem('orders');
+            const savedInventory = localStorage.getItem('inventory');
+            const savedShifts = localStorage.getItem('shifts');
+            const savedSalesHistory = localStorage.getItem('salesHistory');
+
+            if (savedOrders) orders = JSON.parse(savedOrders);
+            if (savedInventory) inventory = JSON.parse(savedInventory);
+            if (savedShifts) shifts = JSON.parse(savedShifts);
+            if (savedSalesHistory) salesHistory = JSON.parse(savedSalesHistory);
+        }
+
+        // Save data to localStorage
+        function saveLocalData() {
+            localStorage.setItem('orders', JSON.stringify(orders));
+            localStorage.setItem('inventory', JSON.stringify(inventory));
+            localStorage.setItem('shifts', JSON.stringify(shifts));
+            localStorage.setItem('salesHistory', JSON.stringify(salesHistory));
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Login form
+            loginForm.addEventListener('submit', handleLogin);
+
+            // Create account
+            createAccountBtn.addEventListener('click', () =&gt; {
+                createAccountModal.classList.add('active');
+            });
+
+            closeCreateAccountModal.addEventListener('click', () =&gt; {
+                createAccountModal.classList.remove('active');
+            });
+
+            cancelCreateAccount.addEventListener('click', () =&gt; {
+                createAccountModal.classList.remove('active');
+            });
+
+            confirmCreateAccount.addEventListener('click', handleCreateAccount);
+
+            // Logout
+            logoutBtn.addEventListener('click', handleLogout);
+
+            // Menu items
+            menuItems.forEach(item =&gt; {
+                item.addEventListener('click', () =&gt; {
+                    const section = item.getAttribute('data-section');
+                    
+                    // Check if admin section and verify password
+                    if (section === 'admin' &amp;&amp; !isAdmin) {
+                        adminPasswordModal.classList.add('active');
+                        return;
+                    }
+                    
+                    switchSection(section);
+                });
+            });
+
+            // Tabs
+            tabs.forEach(tab =&gt; {
+                tab.addEventListener('click', () =&gt; {
+                    const tabId = tab.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Add item to order
+            addItemBtn.addEventListener('click', () =&gt; {
+                populateItemSelect();
+                addItemModal.classList.add('active');
+            });
+
+            closeAddItemModal.addEventListener('click', () =&gt; {
+                addItemModal.classList.remove('active');
+            });
+
+            cancelAddItem.addEventListener('click', () =&gt; {
+                addItemModal.classList.remove('active');
+            });
+
+            confirmAddItem.addEventListener('click', handleAddItem);
+
+            // Submit order
+            submitOrderBtn.addEventListener('click', handleSubmitOrder);
+
+            // Add stock
+            addStockBtn.addEventListener('click', () =&gt; {
+                addStockModal.classList.add('active');
+            });
+
+            closeAddStockModal.addEventListener('click', () =&gt; {
+                addStockModal.classList.remove('active');
+            });
+
+            cancelAddStock.addEventListener('click', () =&gt; {
+                addStockModal.classList.remove('active');
+            });
+
+            confirmAddStock.addEventListener('click', handleAddStock);
+
+            // Edit stock
+            closeEditStockModal.addEventListener('click', () =&gt; {
+                editStockModal.classList.remove('active');
+            });
+
+            cancelEditStock.addEventListener('click', () =&gt; {
+                editStockModal.classList.remove('active');
+            });
+
+            confirmEditStock.addEventListener('click', handleEditStock);
+
+            // Add shift
+            addShiftBtn.addEventListener('click', () =&gt; {
+                addShiftModal.classList.add('active');
+            });
+
+            closeAddShiftModal.addEventListener('click', () =&gt; {
+                addShiftModal.classList.remove('active');
+            });
+
+            cancelAddShift.addEventListener('click', () =&gt; {
+                addShiftModal.classList.remove('active');
+            });
+
+            confirmAddShift.addEventListener('click', handleAddShift);
+
+            // Delete account
+            deleteAccountBtn.addEventListener('click', () =&gt; {
+                deleteAccountModal.classList.add('active');
+            });
+
+            closeDeleteAccountModal.addEventListener('click', () =&gt; {
+                deleteAccountModal.classList.remove('active');
+            });
+
+            cancelDeleteAccount.addEventListener('click', () =&gt; {
+                deleteAccountModal.classList.remove('active');
+            });
+
+            confirmDeleteAccount.addEventListener('click', handleDeleteAccount);
+
+            // Admin password
+            closeAdminPasswordModal.addEventListener('click', () =&gt; {
+                adminPasswordModal.classList.remove('active');
+            });
+
+            cancelAdminPassword.addEventListener('click', () =&gt; {
+                adminPasswordModal.classList.remove('active');
+            });
+
+            confirmAdminPassword.addEventListener('click', handleAdminPassword);
+
+            // Account settings
+            accountSettingsForm.addEventListener('submit', handleAccountSettings);
+        }
+
+        // Handle login
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const boothNumber = document.getElementById('loginBoothNumber').value;
+
+            // Check for master account
+            const masterAccount = JSON.parse(localStorage.getItem('masterAccount'));
+            if (username === masterAccount.username &amp;&amp; password === masterAccount.password) {
+                currentUser = masterAccount;
+                showMasterDashboard();
+                return;
+            }
+
+            // Check for regular booth account
+            const boothKey = `booth_${boothNumber}`;
+            const boothData = localStorage.getItem(boothKey);
+            
+            if (!boothData) {
+                showNotification('Invalid booth number or credentials', 'error');
+                return;
+            }
+
+            const booth = JSON.parse(boothData);
+            
+            if (username === booth.username &amp;&amp; password === booth.password) {
+                currentUser = { username, boothNumber, role: 'user' };
+                currentBooth = booth;
+                showDashboard();
+            } else if (username === booth.adminUsername &amp;&amp; password === booth.adminPassword) {
+                currentUser = { username, boothNumber, role: 'admin' };
+                currentBooth = booth;
+                isAdmin = true;
+                showDashboard();
+            } else {
+                showNotification('Invalid username or password', 'error');
+            }
+        }
+
+        // Handle create account
+        function handleCreateAccount() {
+            const newUsername = document.getElementById('newUsername').value;
+            const newAccountPassword = document.getElementById('newAccountPassword').value;
+            const confirmAccountPassword = document.getElementById('confirmAccountPassword').value;
+            const newBoothNumber = document.getElementById('newBoothNumber').value;
+            const newBoothName = document.getElementById('newBoothName').value;
+            const adminPassword = document.getElementById('adminPassword').value;
+
+            if (newAccountPassword !== confirmAccountPassword) {
+                showNotification('Passwords do not match', 'error');
+                return;
+            }
+
+            const boothKey = `booth_${newBoothNumber}`;
+            
+            if (localStorage.getItem(boothKey)) {
+                showNotification('Booth number already exists', 'error');
+                return;
+            }
+
+            const newBooth = {
+                boothNumber: newBoothNumber,
+                boothName: newBoothName,
+                username: newUsername,
+                password: newAccountPassword,
+                adminUsername: `admin_${newBoothNumber}`,
+                adminPassword: adminPassword,
+                inventory: [
+                    { id: 1, name: 'Burger', quantity: 10, price: 15.00 },
+                    { id: 2, name: 'Pizza', quantity: 8, price: 25.00 },
+                    { id: 3, name: 'Sandwich', quantity: 15, price: 12.00 },
+                    { id: 4, name: 'Fries', quantity: 20, price: 8.00 },
+                    { id: 5, name: 'Soft Drink', quantity: 30, price: 5.00 }
+                ],
+                orders: [],
+                shifts: [],
+                salesHistory: []
+            };
+
+            localStorage.setItem(boothKey, JSON.stringify(newBooth));
+            
+            showNotification('Account created successfully! You can now login with your credentials.', 'success');
+            createAccountModal.classList.remove('active');
+            createAccountForm.reset();
+        }
+
+        // Handle logout
+        function handleLogout() {
+            currentUser = null;
+            currentBooth = null;
+            isAdmin = false;
+            loginContainer.style.display = 'flex';
+            dashboardContainer.style.display = 'none';
+            masterDashboard.style.display = 'none';
+            userInfo.style.display = 'none';
+            loginForm.reset();
+        }
+
+        // Show dashboard
+        function showDashboard() {
+            loginContainer.style.display = 'none';
+            dashboardContainer.style.display = 'block';
+            userInfo.style.display = 'flex';
+            
+            userName.textContent = currentUser.username;
+            userRole.textContent = currentUser.role === 'admin' ? 'Administrator' : 'Staff';
+            userAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+            
+            if (currentUser.role === 'admin') {
+                adminMenuItem.style.display = 'block';
+            }
+            
+            // Load booth data
+            if (currentBooth) {
+                inventory = currentBooth.inventory || [];
+                orders = currentBooth.orders || [];
+                shifts = currentBooth.shifts || [];
+                salesHistory = currentBooth.salesHistory || [];
+            }
+            
+            // Render dashboard
+            renderOrderItems();
+            renderRecentOrders();
+            renderPendingOrders();
+            renderReadyOrders();
+            renderStockTable();
+            renderSalesStats();
+            renderSalesHistory();
+            renderShiftsTable();
+            loadAccountSettings();
+        }
+
+        // Show master dashboard
+        function showMasterDashboard() {
+            loginContainer.style.display = 'none';
+            dashboardContainer.style.display = 'block';
+            userInfo.style.display = 'flex';
+            
+            userName.textContent = 'Master Account';
+            userRole.textContent = 'Administrator';
+            userAvatar.textContent = 'M';
+            
+            // Hide sidebar and show master dashboard
+            document.querySelector('.sidebar').style.display = 'none';
+            document.querySelector('.main-content').style.marginLeft = '0';
+            
+            // Hide all sections and show master dashboard
+            contentSections.forEach(section =&gt; {
+                section.style.display = 'none';
+            });
+            
+            masterDashboard.style.display = 'block';
+            
+            // Load master dashboard data
+            loadMasterDashboard();
+        }
+
+        // Load master dashboard
+        function loadMasterDashboard() {
+            // Get all booths
+            const booths = [];
+            for (let i = 0; i &lt; localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('booth_')) {
+                    const booth = JSON.parse(localStorage.getItem(key));
+                    booths.push(booth);
+                }
+            }
+            
+            // Calculate stats
+            let totalRevenue = 0;
+            let totalOrders = 0;
+            
+            booths.forEach(booth =&gt; {
+                if (booth.salesHistory) {
+                    booth.salesHistory.forEach(sale =&gt; {
+                        totalRevenue += parseFloat(sale.total);
+                        totalOrders++;
+                    });
+                }
+            });
+            
+            document.getElementById('totalBooths').textContent = booths.length;
+            document.getElementById('totalRevenue').textContent = `${totalRevenue.toFixed(2)} AED`;
+            document.getElementById('totalOrders').textContent = totalOrders;
+            
+            // Calculate booth rankings
+            const boothRankings = booths.map(booth =&gt; {
+                let revenue = 0;
+                let orderCount = 0;
+                
+                if (booth.salesHistory) {
+                    booth.salesHistory.forEach(sale =&gt; {
+                        revenue += parseFloat(sale.total);
+                        orderCount++;
+                    });
+                }
+                
+                return {
+                    boothNumber: booth.boothNumber,
+                    boothName: booth.boothName,
+                    revenue,
+                    orderCount
+                };
+            }).sort((a, b) =&gt; b.revenue - a.revenue);
+            
+            // Render booth ranking table
+            const rankingBody = document.getElementById('boothRankingBody');
+            rankingBody.innerHTML = '';
+            
+            boothRankings.forEach((booth, index) =&gt; {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    &lt;td&gt;${index + 1}&lt;/td&gt;
+                    &lt;td&gt;${booth.boothNumber}&lt;/td&gt;
+                    &lt;td&gt;${booth.boothName}&lt;/td&gt;
+                    &lt;td&gt;${booth.revenue.toFixed(2)} AED&lt;/td&gt;
+                    &lt;td&gt;${booth.orderCount}&lt;/td&gt;
+                `;
+                rankingBody.appendChild(row);
+            });
+        }
+
+        // Switch section
+        function switchSection(sectionId) {
+            menuItems.forEach(item =&gt; {
+                item.classList.remove('active');
+            });
+            
+            contentSections.forEach(section =&gt; {
+                section.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-section=&quot;${sectionId}&quot;]`).classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Switch tab
+        function switchTab(tabId) {
+            tabs.forEach(tab =&gt; {
+                tab.classList.remove('active');
+            });
+            
+            tabContents.forEach(content =&gt; {
+                content.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-tab=&quot;${tabId}&quot;]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Handle admin password
+        function handleAdminPassword() {
+            const password = document.getElementById('adminPasswordInput').value;
+            
+            if (password === currentBooth.adminPassword) {
+                isAdmin = true;
+                adminPasswordModal.classList.remove('active');
+                switchSection('admin');
+                document.getElementById('adminPasswordInput').value = '';
+            } else {
+                showNotification('Incorrect admin password', 'error');
+            }
+        }
+
+        // Populate item select
+        function populateItemSelect() {
+            const itemSelect = document.getElementById('itemSelect');
+            itemSelect.innerHTML = '';
+            
+            inventory.forEach(item =&gt; {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = `${item.name} - ${item.price.toFixed(2)} AED`;
+                itemSelect.appendChild(option);
+            });
+        }
+
+        // Handle add item
+        function handleAddItem() {
+            const itemId = parseInt(document.getElementById('itemSelect').value);
+            const quantity = parseInt(document.getElementById('itemQuantity').value);
+            
+            const item = inventory.find(i =&gt; i.id === itemId);
+            
+            if (!item) {
+                showNotification('Invalid item selected', 'error');
+                return;
+            }
+            
+            if (item.quantity &lt; quantity) {
+                showNotification('Not enough stock available', 'error');
+                return;
+            }
+            
+            // Check if item already in order
+            const existingItem = orderItems.find(i =&gt; i.id === itemId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                orderItems.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity
+                });
+            }
+            
+            renderOrderItems();
+            addItemModal.classList.remove('active');
+            document.getElementById('itemQuantity').value = 1;
+        }
+
+        // Render order items
+        function renderOrderItems() {
+            const orderItemsBody = document.getElementById('orderItemsBody');
+            orderItemsBody.innerHTML = '';
+            
+            let total = 0;
+            
+            orderItems.forEach((item, index) =&gt; {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    &lt;td&gt;${item.name}&lt;/td&gt;
+                    &lt;td&gt;${item.price.toFixed(2)} AED&lt;/td&gt;
+                    &lt;td&gt;${item.quantity}&lt;/td&gt;
+                    &lt;td&gt;${itemTotal.toFixed(2)} AED&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;button class=&quot;btn btn-sm btn-red&quot; onclick=&quot;removeOrderItem(${index})&quot;&gt;
+                            &lt;i class=&quot;fas fa-trash&quot;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/td&gt;
+                `;
+                orderItemsBody.appendChild(row);
+            });
+            
+            document.getElementById('orderTotal').textContent = `${total.toFixed(2)} AED`;
+        }
+
+        // Remove order item
+        function removeOrderItem(index) {
+            orderItems.splice(index, 1);
+            renderOrderItems();
+        }
+
+        // Handle submit order
+        function handleSubmitOrder() {
+            const customerName = document.getElementById('customerName').value;
+            const orderType = document.getElementById('orderType').value;
+            
+            if (!customerName) {
+                showNotification('Please enter customer name', 'error');
+                return;
+            }
+            
+            if (orderItems.length === 0) {
+                showNotification('Please add at least one item to the order', 'error');
+                return;
+            }
+            
+            // Check stock availability
+            for (const item of orderItems) {
+                const stockItem = inventory.find(i =&gt; i.id === item.id);
+                if (stockItem.quantity &lt; item.quantity) {
+                    showNotification(`Not enough stock for ${item.name}`, 'error');
+                    return;
+                }
+            }
+            
+            // Generate order ID
+            const orderId = `ORD${Date.now()}`;
+            
+            // Calculate total
+            let total = 0;
+            orderItems.forEach(item =&gt; {
+                total += item.price * item.quantity;
+            });
+            
+            // Create order object
+            const order = {
+                id: orderId,
+                customerName,
+                orderType,
+                items: [...orderItems],
+                total: total.toFixed(2),
+                status: 'pending',
+                date: new Date().toISOString(),
+                staff: currentUser.username
+            };
+            
+            // Update stock
+            orderItems.forEach(item =&gt; {
+                const stockItem = inventory.find(i =&gt; i.id === item.id);
+                stockItem.quantity -= item.quantity;
+            });
+            
+            // Add to orders
+            orders.push(order);
+            
+            // Add to sales history
+            salesHistory.push({
+                orderId: order.id,
+                date: order.date,
+                items: order.items.map(item =&gt; `${item.name} x${item.quantity}`),
+                total: order.total,
+                staff: order.staff
+            });
+            
+            // Save data
+            currentBooth.inventory = inventory;
+            currentBooth.orders = orders;
+            currentBooth.salesHistory = salesHistory;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Reset form
+            document.getElementById('customerName').value = '';
+            orderItems = [];
+            
+            // Render updated data
+            renderOrderItems();
+            renderRecentOrders();
+            renderPendingOrders();
+            renderStockTable();
+            renderSalesStats();
+            renderSalesHistory();
+            
+            showNotification('Order submitted successfully!', 'success');
+        }
+
+        // Render recent orders
+        function renderRecentOrders() {
+            const recentOrdersBody = document.getElementById('recentOrdersBody');
+            recentOrdersBody.innerHTML = '';
+            
+            const recentOrders = [...orders].sort((a, b) =&gt; new Date(b.date) - new Date(a.date)).slice(0, 10);
+            
+            if (recentOrders.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;6&quot; class=&quot;text-center&quot;&gt;No recent orders&lt;/td&gt;';
+                recentOrdersBody.appendChild(row);
+                return;
+            }
+            
+            recentOrders.forEach(order =&gt; {
+                const row = document.createElement('tr');
+                
+                const items = order.items.map(item =&gt; `${item.name} x${item.quantity}`).join(', ');
+                
+                let statusBadge = '';
+                if (order.status === 'pending') {
+                    statusBadge = '&lt;span class=&quot;badge badge-warning&quot;&gt;Pending&lt;/span&gt;';
+                } else if (order.status === 'cooking') {
+                    statusBadge = '&lt;span class=&quot;badge badge-info&quot;&gt;Cooking&lt;/span&gt;';
+                } else if (order.status === 'ready') {
+                    statusBadge = '&lt;span class=&quot;badge badge-success&quot;&gt;Ready&lt;/span&gt;';
+                } else if (order.status === 'completed') {
+                    statusBadge = '&lt;span class=&quot;badge badge-success&quot;&gt;Completed&lt;/span&gt;';
+                }
+                
+                row.innerHTML = `
+                    &lt;td&gt;${order.id}&lt;/td&gt;
+                    &lt;td&gt;${order.customerName}&lt;/td&gt;
+                    &lt;td&gt;${items}&lt;/td&gt;
+                    &lt;td&gt;${order.total} AED&lt;/td&gt;
+                    &lt;td&gt;${statusBadge}&lt;/td&gt;
+                    &lt;td&gt;${new Date(order.date).toLocaleString()}&lt;/td&gt;
+                `;
+                recentOrdersBody.appendChild(row);
+            });
+        }
+
+        // Render pending orders
+        function renderPendingOrders() {
+            const pendingOrdersBody = document.getElementById('pendingOrdersBody');
+            pendingOrdersBody.innerHTML = '';
+            
+            const pendingOrders = orders.filter(order =&gt; order.status === 'pending' || order.status === 'cooking');
+            
+            if (pendingOrders.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;6&quot; class=&quot;text-center&quot;&gt;No pending orders&lt;/td&gt;';
+                pendingOrdersBody.appendChild(row);
+                return;
+            }
+            
+            pendingOrders.forEach(order =&gt; {
+                const row = document.createElement('tr');
+                
+                const items = order.items.map(item =&gt; `${item.name} x${item.quantity}`).join(', ');
+                
+                let statusBadge = '';
+                if (order.status === 'pending') {
+                    statusBadge = '&lt;span class=&quot;badge badge-warning&quot;&gt;Pending&lt;/span&gt;';
+                } else if (order.status === 'cooking') {
+                    statusBadge = '&lt;span class=&quot;badge badge-info&quot;&gt;Cooking&lt;/span&gt;';
+                }
+                
+                let actionButtons = '';
+                if (order.status === 'pending') {
+                    actionButtons = `&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;updateOrderStatus('${order.id}', 'cooking')&quot;&gt;Start Cooking&lt;/button&gt;`;
+                } else if (order.status === 'cooking') {
+                    actionButtons = `&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;updateOrderStatus('${order.id}', 'ready')&quot;&gt;Mark as Ready&lt;/button&gt;`;
+                }
+                
+                row.innerHTML = `
+                    &lt;td&gt;${order.id}&lt;/td&gt;
+                    &lt;td&gt;${order.customerName}&lt;/td&gt;
+                    &lt;td&gt;${items}&lt;/td&gt;
+                    &lt;td&gt;${new Date(order.date).toLocaleString()}&lt;/td&gt;
+                    &lt;td&gt;${statusBadge}&lt;/td&gt;
+                    &lt;td&gt;${actionButtons}&lt;/td&gt;
+                `;
+                pendingOrdersBody.appendChild(row);
+            });
+        }
+
+        // Render ready orders
+        function renderReadyOrders() {
+            const readyOrdersBody = document.getElementById('readyOrdersBody');
+            readyOrdersBody.innerHTML = '';
+            
+            const readyOrders = orders.filter(order =&gt; order.status === 'ready');
+            
+            if (readyOrders.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;6&quot; class=&quot;text-center&quot;&gt;No orders ready for pickup&lt;/td&gt;';
+                readyOrdersBody.appendChild(row);
+                return;
+            }
+            
+            readyOrders.forEach(order =&gt; {
+                const row = document.createElement('tr');
+                
+                const items = order.items.map(item =&gt; `${item.name} x${item.quantity}`).join(', ');
+                
+                row.innerHTML = `
+                    &lt;td&gt;${order.id}&lt;/td&gt;
+                    &lt;td&gt;${order.customerName}&lt;/td&gt;
+                    &lt;td&gt;${items}&lt;/td&gt;
+                    &lt;td&gt;${new Date(order.date).toLocaleString()}&lt;/td&gt;
+                    &lt;td&gt;&lt;span class=&quot;badge badge-success&quot;&gt;Ready&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;updateOrderStatus('${order.id}', 'completed')&quot;&gt;Complete Order&lt;/button&gt;&lt;/td&gt;
+                `;
+                readyOrdersBody.appendChild(row);
+            });
+        }
+
+        // Update order status
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o =&gt; o.id === orderId);
+            
+            if (!order) {
+                showNotification('Order not found', 'error');
+                return;
+            }
+            
+            order.status = newStatus;
+            
+            // Save data
+            currentBooth.orders = orders;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderPendingOrders();
+            renderReadyOrders();
+            renderRecentOrders();
+            
+            showNotification(`Order status updated to ${newStatus}`, 'success');
+        }
+
+        // Render stock table
+        function renderStockTable() {
+            const stockTableBody = document.getElementById('stockTableBody');
+            stockTableBody.innerHTML = '';
+            
+            if (inventory.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;No items in inventory&lt;/td&gt;';
+                stockTableBody.appendChild(row);
+                return;
+            }
+            
+            inventory.forEach(item =&gt; {
+                const row = document.createElement('tr');
+                
+                let stockStatus = '';
+                if (item.quantity &lt;= 3) {
+                    stockStatus = '&lt;span class=&quot;stock-warning stock-critical&quot;&gt;Low Stock&lt;/span&gt;';
+                } else if (item.quantity &lt;= 6) {
+                    stockStatus = '&lt;span class=&quot;stock-warning stock-low&quot;&gt;Running Low&lt;/span&gt;';
+                }
+                
+                row.innerHTML = `
+                    &lt;td&gt;${item.name}&lt;/td&gt;
+                    &lt;td&gt;${item.quantity} ${stockStatus}&lt;/td&gt;
+                    &lt;td&gt;${item.price.toFixed(2)} AED&lt;/td&gt;
+                    &lt;td&gt;${item.quantity &gt; 0 ? 'In Stock' : 'Out of Stock'}&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;div class=&quot;action-buttons&quot;&gt;
+                            &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;editStockItem(${item.id})&quot;&gt;
+                                &lt;i class=&quot;fas fa-edit&quot;&gt;&lt;/i&gt;
+                            &lt;/button&gt;
+                            &lt;button class=&quot;btn btn-sm btn-red&quot; onclick=&quot;deleteStockItem(${item.id})&quot;&gt;
+                                &lt;i class=&quot;fas fa-trash&quot;&gt;&lt;/i&gt;
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/td&gt;
+                `;
+                stockTableBody.appendChild(row);
+            });
+        }
+
+        // Handle add stock
+        function handleAddStock() {
+            const name = document.getElementById('stockItemName').value;
+            const quantity = parseInt(document.getElementById('stockItemQuantity').value);
+            const price = parseFloat(document.getElementById('stockItemPrice').value);
+            
+            if (!name || isNaN(quantity) || isNaN(price)) {
+                showNotification('Please fill all fields correctly', 'error');
+                return;
+            }
+            
+            const newItem = {
+                id: Date.now(),
+                name,
+                quantity,
+                price
+            };
+            
+            inventory.push(newItem);
+            
+            // Save data
+            currentBooth.inventory = inventory;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderStockTable();
+            
+            // Reset form
+            addStockForm.reset();
+            addStockModal.classList.remove('active');
+            
+            showNotification('Item added to inventory successfully', 'success');
+        }
+
+        // Edit stock item
+        function editStockItem(itemId) {
+            const item = inventory.find(i =&gt; i.id === itemId);
+            
+            if (!item) {
+                showNotification('Item not found', 'error');
+                return;
+            }
+            
+            document.getElementById('editStockId').value = item.id;
+            document.getElementById('editStockItemName').value = item.name;
+            document.getElementById('editStockItemQuantity').value = item.quantity;
+            document.getElementById('editStockItemPrice').value = item.price;
+            
+            editStockModal.classList.add('active');
+        }
+
+        // Handle edit stock
+        function handleEditStock() {
+            const id = parseInt(document.getElementById('editStockId').value);
+            const name = document.getElementById('editStockItemName').value;
+            const quantity = parseInt(document.getElementById('editStockItemQuantity').value);
+            const price = parseFloat(document.getElementById('editStockItemPrice').value);
+            
+            if (!name || isNaN(quantity) || isNaN(price)) {
+                showNotification('Please fill all fields correctly', 'error');
+                return;
+            }
+            
+            const itemIndex = inventory.findIndex(i =&gt; i.id === id);
+            
+            if (itemIndex === -1) {
+                showNotification('Item not found', 'error');
+                return;
+            }
+            
+            inventory[itemIndex] = {
+                id,
+                name,
+                quantity,
+                price
+            };
+            
+            // Save data
+            currentBooth.inventory = inventory;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderStockTable();
+            
+            // Reset form
+            editStockForm.reset();
+            editStockModal.classList.remove('active');
+            
+            showNotification('Item updated successfully', 'success');
+        }
+
+        // Delete stock item
+        function deleteStockItem(itemId) {
+            if (!confirm('Are you sure you want to delete this item?')) {
+                return;
+            }
+            
+            const itemIndex = inventory.findIndex(i =&gt; i.id === itemId);
+            
+            if (itemIndex === -1) {
+                showNotification('Item not found', 'error');
+                return;
+            }
+            
+            inventory.splice(itemIndex, 1);
+            
+            // Save data
+            currentBooth.inventory = inventory;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderStockTable();
+            
+            showNotification('Item deleted successfully', 'success');
+        }
+
+        // Render sales stats
+        function renderSalesStats() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const weekAgo = new Date(today);
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            
+            let todayRevenue = 0;
+            let todayOrders = 0;
+            let weekRevenue = 0;
+            
+            salesHistory.forEach(sale =&gt; {
+                const saleDate = new Date(sale.date);
+                
+                if (saleDate &gt;= today) {
+                    todayRevenue += parseFloat(sale.total);
+                    todayOrders++;
+                }
+                
+                if (saleDate &gt;= weekAgo) {
+                    weekRevenue += parseFloat(sale.total);
+                }
+            });
+            
+            document.getElementById('todayRevenue').textContent = `${todayRevenue.toFixed(2)} AED`;
+            document.getElementById('todayOrders').textContent = todayOrders;
+            document.getElementById('weekRevenue').textContent = `${weekRevenue.toFixed(2)} AED`;
+        }
+
+        // Render sales history
+        function renderSalesHistory() {
+            const salesHistoryBody = document.getElementById('salesHistoryBody');
+            salesHistoryBody.innerHTML = '';
+            
+            if (salesHistory.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;No sales history&lt;/td&gt;';
+                salesHistoryBody.appendChild(row);
+                return;
+            }
+            
+            const sortedSales = [...salesHistory].sort((a, b) =&gt; new Date(b.date) - new Date(a.date));
+            
+            sortedSales.forEach(sale =&gt; {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    &lt;td&gt;${sale.orderId}&lt;/td&gt;
+                    &lt;td&gt;${new Date(sale.date).toLocaleString()}&lt;/td&gt;
+                    &lt;td&gt;${sale.items.join(', ')}&lt;/td&gt;
+                    &lt;td&gt;${sale.total} AED&lt;/td&gt;
+                    &lt;td&gt;${sale.staff}&lt;/td&gt;
+                `;
+                salesHistoryBody.appendChild(row);
+            });
+        }
+
+        // Handle add shift
+        function handleAddShift() {
+            const name = document.getElementById('shiftName').value;
+            const startTime = document.getElementById('shiftStartTime').value;
+            const endTime = document.getElementById('shiftEndTime').value;
+            const staff = document.getElementById('shiftStaff').value;
+            
+            if (!name || !startTime || !endTime || !staff) {
+                showNotification('Please fill all fields', 'error');
+                return;
+            }
+            
+            const newShift = {
+                id: Date.now(),
+                name,
+                startTime,
+                endTime,
+                staff
+            };
+            
+            shifts.push(newShift);
+            
+            // Save data
+            currentBooth.shifts = shifts;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderShiftsTable();
+            
+            // Reset form
+            addShiftForm.reset();
+            addShiftModal.classList.remove('active');
+            
+            showNotification('Shift added successfully', 'success');
+        }
+
+        // Render shifts table
+        function renderShiftsTable() {
+            const shiftsTableBody = document.getElementById('shiftsTableBody');
+            shiftsTableBody.innerHTML = '';
+            
+            if (shifts.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '&lt;td colspan=&quot;5&quot; class=&quot;text-center&quot;&gt;No shifts scheduled&lt;/td&gt;';
+                shiftsTableBody.appendChild(row);
+                return;
+            }
+            
+            shifts.forEach(shift =&gt; {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    &lt;td&gt;${shift.name}&lt;/td&gt;
+                    &lt;td&gt;${shift.startTime}&lt;/td&gt;
+                    &lt;td&gt;${shift.endTime}&lt;/td&gt;
+                    &lt;td&gt;${shift.staff}&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;button class=&quot;btn btn-sm btn-red&quot; onclick=&quot;deleteShift(${shift.id})&quot;&gt;
+                            &lt;i class=&quot;fas fa-trash&quot;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/td&gt;
+                `;
+                shiftsTableBody.appendChild(row);
+            });
+        }
+
+        // Delete shift
+        function deleteShift(shiftId) {
+            if (!confirm('Are you sure you want to delete this shift?')) {
+                return;
+            }
+            
+            const shiftIndex = shifts.findIndex(s =&gt; s.id === shiftId);
+            
+            if (shiftIndex === -1) {
+                showNotification('Shift not found', 'error');
+                return;
+            }
+            
+            shifts.splice(shiftIndex, 1);
+            
+            // Save data
+            currentBooth.shifts = shifts;
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Render updated data
+            renderShiftsTable();
+            
+            showNotification('Shift deleted successfully', 'success');
+        }
+
+        // Load account settings
+        function loadAccountSettings() {
+            if (currentBooth) {
+                document.getElementById('boothName').value = currentBooth.boothName || '';
+                document.getElementById('boothNumberSettings').value = currentBooth.boothNumber || '';
+            }
+        }
+
+        // Handle account settings
+        function handleAccountSettings(e) {
+            e.preventDefault();
+            
+            const boothName = document.getElementById('boothName').value;
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!boothName) {
+                showNotification('Booth name is required', 'error');
+                return;
+            }
+            
+            if (currentPassword &amp;&amp; currentPassword !== currentBooth.password) {
+                showNotification('Current password is incorrect', 'error');
+                return;
+            }
+            
+            if (newPassword &amp;&amp; newPassword !== confirmPassword) {
+                showNotification('New passwords do not match', 'error');
+                return;
+            }
+            
+            // Update booth data
+            currentBooth.boothName = boothName;
+            
+            if (newPassword) {
+                currentBooth.password = newPassword;
+            }
+            
+            // Save data
+            localStorage.setItem(`booth_${currentBooth.boothNumber}`, JSON.stringify(currentBooth));
+            
+            // Reset form
+            accountSettingsForm.reset();
+            loadAccountSettings();
+            
+            showNotification('Account settings updated successfully', 'success');
+        }
+
+        // Handle delete account
+        function handleDeleteAccount() {
+            const confirmation = document.getElementById('deleteConfirmation').value;
+            
+            if (confirmation !== 'DELETE') {
+                showNotification('Please type DELETE to confirm', 'error');
+                return;
+            }
+            
+            if (!confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                return;
+            }
+            
+            // Delete booth data
+            localStorage.removeItem(`booth_${currentBooth.boothNumber}`);
+            
+            // Logout
+            handleLogout();
+            
+            showNotification('Account deleted successfully', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() =&gt; {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
